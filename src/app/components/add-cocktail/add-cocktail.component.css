@@ -1,0 +1,16 @@
+form {
+  width: 40vw;
+  position: relative;
+  left: 20%;
+  margin-top: 40px;
+}
+
+.card {
+  width: 30vw;
+  margin-top: 70px;
+  position: relative;
+  left: 20%;
+}
+.example-chip-list {
+  width: 100%;
+}
