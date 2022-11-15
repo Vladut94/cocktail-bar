@@ -3,6 +3,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {ApiCocktailService} from "../../core/services/api-cocktail.service";
+import {Router} from "@angular/router";
 
 
 export interface Ingredient {
@@ -44,7 +45,9 @@ export class AddCocktailComponent implements OnInit {
     }
   }
 
-  constructor(private formBuilder: FormBuilder, private cocktailService: ApiCocktailService) {
+  constructor(private formBuilder: FormBuilder,
+              private cocktailService: ApiCocktailService,
+              private router: Router) {
     this.cocktailForm = new FormGroup<any>({
       name : new FormControl('', Validators.required),
       author : new FormControl('', Validators.required),
@@ -68,6 +71,9 @@ export class AddCocktailComponent implements OnInit {
      withAlcohol: this.cocktailForm.value['withAlcohol'],
    }
 
-   this.cocktailService.addCocktail(payload).subscribe()
+   this.cocktailService.addCocktail(payload).subscribe();
+
+   this.cocktailForm.reset();
+   this.router.navigate(['my-cocktails']);
   }
 }
