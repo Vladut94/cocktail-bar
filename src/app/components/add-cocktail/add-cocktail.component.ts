@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
+import {ApiCocktailService} from "../../core/services/api-cocktail.service";
+
 
 export interface Ingredient {
   name: string;
@@ -42,7 +44,7 @@ export class AddCocktailComponent implements OnInit {
     }
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private cocktailService: ApiCocktailService) {
     this.cocktailForm = new FormGroup<any>({
       name : new FormControl('', Validators.required),
       author : new FormControl('', Validators.required),
@@ -57,6 +59,15 @@ export class AddCocktailComponent implements OnInit {
   }
 
   register() {
+   const payload = {
+     name: this.cocktailForm.value['name'],
+     author: this.cocktailForm.value['author'],
+     ingredients: this.ingredients,
+     description: this.cocktailForm.value['description'],
+     imageUrl: this.cocktailForm.value['imageUrl'],
+     withAlcohol: this.cocktailForm.value['withAlcohol'],
+   }
 
+   this.cocktailService.addCocktail(payload).subscribe()
   }
 }

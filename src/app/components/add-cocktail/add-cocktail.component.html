@@ -46,22 +46,20 @@
         <label for="imageUrl">Cocktail Image Link</label>
         <input id="imageUrl" formControlName="imageUrl" type="text" class="form-control mt-1">
       </div>
-      <button type="submit" class="btn btn-success m-2">Save</button>
+      <button type="submit" class="btn btn-success m-2">{{actionBtn}}</button>
     </form>
   </div>
   <div class="col-md-6">
-    <div class="card">
-      <img src="..." class="card-img-top">
+    <div class="card" *ngIf="ingredients.length > 0">
+      <img src="{{cocktailForm.value['imageUrl']}}" class="card-img-top">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <h6 class="card-subtitle mb-2">Card type</h6>
+        <h5 class="card-title">{{cocktailForm.value['name']}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{cocktailForm.value['author']}}</h6>
+        <h6 class="card-subtitle mb-2">{{cocktailForm.value['withAlcohol']}}</h6>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item ingredient</li>
-          <li class="list-group-item">A second item ingredient</li>
-          <li class="list-group-item">A third item ingredient</li>
+          <li *ngFor="let i of ingredients" class="list-group-item">{{i.name}}</li>
         </ul>
-        <p class="card-text">Description</p>
+        <p class="card-text">{{cocktailForm.value['description']}}</p>
       </div>
     </div>
   </div>
