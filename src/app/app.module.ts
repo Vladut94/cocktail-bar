@@ -17,6 +17,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,14 +30,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CardCocktailComponent,
     ModalCocktailComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatChipsModule,
-    MatFormFieldModule,
-    MatIconModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatChipsModule,
+        MatFormFieldModule,
+        MatIconModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

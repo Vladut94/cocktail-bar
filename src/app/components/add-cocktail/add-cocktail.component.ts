@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 
 export interface Ingredient {
   name: string;
@@ -14,6 +15,9 @@ export interface Ingredient {
 
 
 export class AddCocktailComponent implements OnInit {
+  cocktailForm : FormGroup;
+  actionBtn: string = "Save";
+
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   ingredients: Ingredient[] = [];
@@ -38,10 +42,21 @@ export class AddCocktailComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.cocktailForm = new FormGroup<any>({
+      name : new FormControl('', Validators.required),
+      author : new FormControl('', Validators.required),
+      ingredients : new FormControl('', Validators.required),
+      description : new FormControl('', Validators.required),
+      imageUrl : new FormControl('', Validators.required),
+      withAlcohol : new FormControl('', Validators.required)
+    })
+  }
 
   ngOnInit(): void {
   }
 
+  register() {
 
+  }
 }
