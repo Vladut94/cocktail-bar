@@ -1,33 +1,54 @@
-<form>
-  <div class="form-group m-2">
-    <label for="name">Cocktail Name</label>
-    <input id="name" type="text" class="form-control mt-1">
-  </div>
-  <div class="form-group m-2">
-    <label for="author">Cocktail Author</label>
-    <input id="author" type="text" class="form-control mt-1">
-  </div>
-  <div class="form-group m-2 mt-3 mb-3">
-    <label>Type of Cocktail:</label>
-    <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
-    <label class="btn btn-outline-success btn-sm ms-2" for="success-outlined">Cocktail without Alcohol</label>
 
-    <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
-    <label class="btn btn-outline-warning btn-sm ms-2" for="danger-outlined">Cocktail with Alcohol</label>
+<div class="row">
+  <div class="col-md-6">
+    <form>
+      <div class="form-group m-2">
+        <label for="name">Cocktail Name</label>
+        <input id="name" type="text" class="form-control mt-1">
+      </div>
+      <div class="form-group m-2">
+        <label for="author">Cocktail Author</label>
+        <input id="author" type="text" class="form-control mt-1">
+      </div>
+      <div class="form-group m-2 mt-3 mb-3">
+        <label>Type of Cocktail:</label>
+        <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+        <label class="btn btn-outline-success btn-sm ms-2" for="success-outlined">Cocktail without Alcohol</label>
+
+        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+        <label class="btn btn-outline-warning btn-sm ms-2" for="danger-outlined">Cocktail with Alcohol</label>
+      </div>
+      <div class="form-group m-2">
+        <label for="ingredients">Ingredients - press enter after each ingredients</label>
+        <span>{{valueOfIngredients}}</span>
+        <input id="ingredients" type="text" class="form-control" (submit)="getIngredientsValue()">
+        <button class="btn btn-danger mt-2 mb-2">Remove all</button>
+      </div>
+      <div class="form-group m-2">
+        <label for="description">Cocktail Description</label>
+        <textarea id="description" class="form-control mt-1"></textarea>
+      </div>
+      <div class="form-group m-2">
+        <label for="imageUrl">Cocktail Image Link</label>
+        <input id="imageUrl" type="text" class="form-control mt-1">
+      </div>
+      <button class="btn btn-success m-2">Save</button>
+    </form>
   </div>
-  <div class="form-group m-2">
-    <label for="ingredients">Ingredients - press enter after each ingredients</label>
-    <span>{{valueOfIngredients}}</span>
-    <input id="ingredients" type="text" class="form-control" (submit)="getIngredientsValue()">
-    <button class="btn btn-danger mt-2 mb-2">Remove all</button>
+  <div class="col-md-6">
+    <div class="card">
+      <img src="..." class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <h6 class="card-subtitle mb-2">Card type</h6>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item ingredient</li>
+          <li class="list-group-item">A second item ingredient</li>
+          <li class="list-group-item">A third item ingredient</li>
+        </ul>
+        <p class="card-text">Description</p>
+      </div>
+    </div>
   </div>
-  <div class="form-group m-2">
-    <label for="description">Cocktail Description</label>
-    <textarea id="description" class="form-control mt-1"></textarea>
-  </div>
-  <div class="form-group m-2">
-    <label for="imageUrl">Cocktail Image Link</label>
-    <input id="imageUrl" type="text" class="form-control mt-1">
-  </div>
-  <button class="btn btn-success m-2">Save</button>
-</form>
+</div>
