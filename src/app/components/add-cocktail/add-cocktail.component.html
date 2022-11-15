@@ -19,9 +19,22 @@
         <label class="btn btn-outline-warning btn-sm ms-2" for="danger-outlined">Cocktail with Alcohol</label>
       </div>
       <div class="form-group m-2">
-        <label for="ingredients">Ingredients - press enter after each ingredients</label>
-        <span>{{valueOfIngredients}}</span>
-        <input id="ingredients" type="text" class="form-control" (submit)="getIngredientsValue()">
+        <mat-form-field class="example-chip-list" appearance="fill">
+          <mat-label>Cocktail ingredients</mat-label>
+          <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let ingredient of ingredients" (removed)="remove(ingredient)">
+              {{ingredient.name}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input placeholder="New ingredient..."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </mat-form-field>
         <button class="btn btn-danger mt-2 mb-2">Remove all</button>
       </div>
       <div class="form-group m-2">

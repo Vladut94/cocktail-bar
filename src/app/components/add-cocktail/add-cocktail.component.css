@@ -1,5 +1,5 @@
 form {
-  width: 30vw;
+  width: 40vw;
   position: relative;
   left: 20%;
   margin-top: 40px;
@@ -10,4 +10,7 @@ form {
   margin-top: 70px;
   position: relative;
   left: 20%;
+}
+.example-chip-list {
+  width: 100%;
 }

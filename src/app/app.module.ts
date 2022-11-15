@@ -13,6 +13,11 @@ import { CocktailsComponent } from './components/my-cocktails/cocktails/cocktail
 import { CardCocktailComponent } from './components/my-cocktails/card-cocktail/card-cocktail.component';
 import { ModalCocktailComponent } from './components/my-cocktails/modal-cocktail/modal-cocktail.component';
 
+import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +31,11 @@ import { ModalCocktailComponent } from './components/my-cocktails/modal-cocktail
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
