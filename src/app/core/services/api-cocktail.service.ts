@@ -17,6 +17,12 @@ export class ApiCocktailService {
     this.baseUrl = 'http://localhost:3000';
   }
 
+  getCocktails(): Observable<Cocktail[]> {
+    const url = `${this.baseUrl}/cocktails`;
+
+    return this.http.get<Cocktail[]>(this.baseUrl);
+  }
+
   addCocktail(payload: any): Observable<Cocktail> {
     const url = `${this.baseUrl}/cocktails`;
 
