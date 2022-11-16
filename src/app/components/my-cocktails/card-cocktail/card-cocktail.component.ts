@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {StateCocktailService} from "../../../core/services/state-cocktail.service";
+import { Cocktail} from "../../../core/interfaces/cocktail.interface";
+
 
 @Component({
   selector: 'card-cocktail',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-cocktail.component.css']
 })
 export class CardCocktailComponent implements OnInit {
+  @Input() cocktail !: Cocktail;
 
-  constructor() { }
+  constructor(private stateCocktailService: StateCocktailService) { }
 
   ngOnInit(): void {
+
   }
 
 }

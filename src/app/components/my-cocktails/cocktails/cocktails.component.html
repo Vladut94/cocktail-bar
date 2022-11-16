@@ -19,5 +19,5 @@
       <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
       <label class="btn btn-outline-success" for="btnradio3">Non-Alcoholic Cocktails</label>
     </div>
-  <card-cocktail></card-cocktail>
+  <card-cocktail *ngFor="let cocktail of cocktails" [cocktail] = "cocktail"></card-cocktail>
 </div>

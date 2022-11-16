@@ -24,7 +24,7 @@
           <mat-label>Cocktail ingredients</mat-label>
           <mat-chip-list #chipList aria-label="Fruit selection">
             <mat-chip *ngFor="let ingredient of ingredients" (removed)="remove(ingredient)">
-              {{ingredient.name}}
+              {{ingredient}}
               <button matChipRemove>
                 <mat-icon>cancel</mat-icon>
               </button>
@@ -60,7 +60,7 @@
           <span *ngIf="cocktailForm.value['withAlcohol'] == false">No</span>
         </h6>
         <ul class="list-group list-group-flush">
-          <li *ngFor="let i of ingredients" class="list-group-item">{{i.name}}</li>
+          <li *ngFor="let i of ingredients" class="list-group-item">{{i}}</li>
         </ul>
         <p class="card-text mt-2">{{cocktailForm.value['description']}}</p>
       </div>

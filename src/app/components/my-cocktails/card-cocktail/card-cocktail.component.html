@@ -1,13 +1,20 @@
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card mb-3">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+      <img src="{{cocktail.imageUrl}}" class="img-fluid rounded-start">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h5 class="card-title">{{cocktail.name}}</h5>
+        <p class="card-text"><small class="text-muted">By {{cocktail.author}}</small></p>
+        <p class="card-text">
+          <span *ngIf="cocktail.withAlcohol == false" class="badge rounded-pill text-bg-success">Non-Alcoholic</span>
+          <span *ngIf="cocktail.withAlcohol == true" class="badge rounded-pill text-bg-warning">Alcoholic</span>
+        </p>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let i of cocktail.ingredients" class="list-group-item">{{i}}</li>
+        </ul>
+        <p class="card-text">{{cocktail.description}}</p>
       </div>
     </div>
   </div>
