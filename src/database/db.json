@@ -4,21 +4,11 @@
       "name": "Whiskey Sour",
       "author": "John",
       "ingredients": [
-        {
-          "name": "Bourbon whiskey"
-        },
-        {
-          "name": "Lemon juice"
-        },
-        {
-          "name": "Maple syrup"
-        },
-        {
-          "name": "Garnish of orange peel"
-        },
-        {
-          "name": "cocktail cherry"
-        }
+        "Bourbon whiskey",
+        "Lemon juice",
+        "Maple syrup",
+        "Garnish of orange peel",
+        "cocktail cherry"
       ],
       "description": "This is the cocktail that started it all. Here at A Couple Cooks, we’re cocktail obsessed. We have a myriad of cocktail recipes. But the first that got us hooked on great cocktails was this whiskey sour recipe! The whiskey sour is a perfectly sweet tart, balanced whiskey drink that actually dates back to the 1870’s.",
       "imageUrl": "https://www.acouplecooks.com/wp-content/uploads/2019/06/Whiskey-Sour-113.jpg",
@@ -29,15 +19,9 @@
       "name": "Margarita",
       "author": "Joe",
       "ingredients": [
-        {
-          "name": "tequila"
-        },
-        {
-          "name": "Cointreau"
-        },
-        {
-          "name": "lime juice"
-        }
+        "tequila",
+        "Cointreau",
+        "lime juice"
       ],
       "description": "Stop right there. Here’s the best margarita recipe you’ll find: zingy, clear, and classic. It’s simple and uses only 3 ingredients",
       "imageUrl": "https://www.acouplecooks.com/wp-content/uploads/2020/02/Margarita-018.jpg",
@@ -48,23 +32,30 @@
       "name": "Choco Cayenne",
       "author": "Bruce",
       "ingredients": [
-        {
-          "name": "70/80 g chocolate gelato"
-        },
-        {
-          "name": "50 ml whole milk"
-        },
-        {
-          "name": "30 ml Cinnamon Syrup"
-        },
-        {
-          "name": "100 g crushed ice/cubes"
-        }
+        "70/80 g chocolate gelato",
+        "50 ml whole milk",
+        "30 ml Cinnamon Syrup",
+        "100 g crushed ice/cubes"
       ],
       "description": "Place the ingredients in blender with the ice and blend until creamy and liquid. Pour into a fantasy glass and garnish with an orange twist and a sprinkling of freshly ground pepper. Serve with a smile. ",
       "imageUrl": "https://en.cocktail.fabbri1905.com/imgpub/2037255/600/0/fp_cioccolato_arancia.png",
       "withAlcohol": false,
       "id": 3
+    },
+    {
+      "name": "Blood orange mojito",
+      "author": "Bruce",
+      "ingredients": [
+        "1 lime, cut into 8 wedges",
+        "5g mint",
+        "2 tsp sugar",
+        "3 blood oranges, juiced (you need around 200ml / 1/3pt juice)",
+        "dash sparkling water"
+      ],
+      "description": "We've given the classic mojito a seasonal twist by adding vibrant blood oranges, mint and lime. Try this alcohol-free mocktail to impress your guests this winter.",
+      "imageUrl": "https://realfood.tesco.com/media/images/BloodOrangeMojito2-LGH-c87d8721-02d2-4c06-87aa-9753c185e681-0-1400x919.jpg",
+      "withAlcohol": false,
+      "id": 4
     }
   ]
 }

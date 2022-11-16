@@ -6,9 +6,6 @@ import {ApiCocktailService} from "../../core/services/api-cocktail.service";
 import {Router} from "@angular/router";
 
 
-export interface Ingredient {
-  name: string;
-}
 
 @Component({
   selector: 'app-add-cocktail',
@@ -23,22 +20,22 @@ export class AddCocktailComponent implements OnInit {
 
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  ingredients: Ingredient[] = [];
+  ingredients: string[] = [];
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
     // Add our fruit
     if (value) {
-      this.ingredients.push({name: value});
+      this.ingredients.push(value);
     }
 
     // Clear the input value
     event.chipInput!.clear();
   }
 
-  remove(fruit: Ingredient): void {
-    const index = this.ingredients.indexOf(fruit);
+  remove(ingredient: string): void {
+    const index = this.ingredients.indexOf(ingredient);
 
     if (index >= 0) {
       this.ingredients.splice(index, 1);

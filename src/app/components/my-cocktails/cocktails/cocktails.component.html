@@ -1,1 +1,23 @@
-<p>cocktails works!</p>
+<div class="container-fluid">
+  <h1>Look on these perfect cocktails</h1>
+  <h6>Sweet, sour, creamy or bubbly - the perfect cocktail is waiting you</h6>
+</div>
+<div class="container m-4">
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </form>
+    <div class="btn-group m-3 mb-5" role="group" aria-label="Basic radio toggle button group">
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+      <label class="btn btn-outline-primary me-2" for="btnradio1">All cocktails</label>
+
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+      <label class="btn btn-outline-warning me-2" for="btnradio2">Alcoholic Cocktails</label>
+
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+      <label class="btn btn-outline-success" for="btnradio3">Non-Alcoholic Cocktails</label>
+    </div>
+  <card-cocktail *ngFor="let cocktail of cocktails" [cocktail] = "cocktail"></card-cocktail>
+</div>
