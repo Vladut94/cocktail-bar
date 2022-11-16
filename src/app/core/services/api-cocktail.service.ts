@@ -23,6 +23,12 @@ export class ApiCocktailService {
     return this.http.get<Cocktail[]>(url);
   }
 
+  deleteCocktail(id: number): Observable<void> {
+    const url = `${this.baseUrl}/cocktails/${id}`;
+
+    return this.http.delete<void>(url);
+  }
+
   addCocktail(payload: any): Observable<Cocktail> {
     const url = `${this.baseUrl}/cocktails`;
 
