@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col-md-6">
-    <form [formGroup]="cocktailForm" (ngSubmit)="register()">
+    <form [formGroup]="cocktailForm" (ngSubmit)="actionBtn === 'Save' ? register() : shouldEditCocktail()">
       <div class="form-group m-2">
         <label for="name">Cocktail Name</label>
         <input id="name" type="text" formControlName="name" class="form-control mt-1">
@@ -49,6 +49,7 @@
       <button type="submit" class="btn btn-success m-2">{{actionBtn}}</button>
     </form>
   </div>
+<!--  Cocktail preview-->
   <div class="col-md-6">
     <div class="card" *ngIf="cocktailForm.value['name'] != '' || ingredients.length > 0">
       <img src="{{cocktailForm.value['imageUrl']}}" class="card-img-top">

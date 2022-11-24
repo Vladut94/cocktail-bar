@@ -4,6 +4,8 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {ApiCocktailService} from "../../core/services/api-cocktail.service";
 import {Router} from "@angular/router";
+import {StateCocktailService} from "../../core/services/state-cocktail.service";
+import {Cocktail} from "../../core/interfaces/cocktail.interface";
 
 
 
@@ -17,6 +19,7 @@ import {Router} from "@angular/router";
 export class AddCocktailComponent implements OnInit {
   cocktailForm : FormGroup;
   actionBtn: string = "Save";
+  cocktailToEdit !: Cocktail;
 
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
@@ -44,6 +47,7 @@ export class AddCocktailComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private cocktailService: ApiCocktailService,
+              private stateCocktailService: StateCocktailService,
               private router: Router) {
     this.cocktailForm = new FormGroup<any>({
       name : new FormControl('', Validators.required),
@@ -59,7 +63,12 @@ export class AddCocktailComponent implements OnInit {
   }
 
   register() {
-   const payload = {
+    if (!this.cocktailToEdit) {
+      this.shouldEditCocktail();
+    }
+    this.actionBtn = "Save";
+
+    const payload = {
      name: this.cocktailForm.value['name'],
      author: this.cocktailForm.value['author'],
      ingredients: this.ingredients,
@@ -72,5 +81,29 @@ export class AddCocktailComponent implements OnInit {
 
    this.cocktailForm.reset();
    this.router.navigate(['my-cocktails']);
+  }
+
+  shouldEditCocktail() {
+    this.actionBtn = "Edit";
+
+    this.stateCocktailService.editCocktail$.subscribe(editCocktail => {
+      console.log(editCocktail);
+      editCocktail.ingredients?.forEach((ingr) => this.ingredients.push(ingr));
+      this.cocktailForm.controls['name'].setValue(editCocktail.name)
+      this.cocktailForm.controls['author'].setValue(editCocktail.author)
+      this.cocktailForm.controls['description'].setValue(editCocktail.description)
+      this.cocktailForm.controls['imageUrl'].setValue(editCocktail.imageUrl)
+      this.cocktailForm.controls['withAlcohol'].setValue(editCocktail.withAlcohol)
+      // this.cocktailForm.patchValue({
+      //   name: editCocktail.name,
+      //   author: editCocktail.author,
+      //   description: editCocktail.description,
+      //   imageUrl: editCocktail.imageUrl,
+      //   withAlcohol: editCocktail.withAlcohol,
+      // })
+      this.cocktailToEdit = editCocktail;
+    });
+    this.cocktailService.editCocktail(this.cocktailForm.value, this.cocktailToEdit.id);
+
   }
 }
