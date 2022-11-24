@@ -38,6 +38,6 @@ export class CardCocktailComponent implements OnInit {
       withAlcohol: this.cocktail.withAlcohol
     }
 
-    this.stateCocktailService.updateCocktail(this.cocktailToSend);
+    this.stateCocktailService.shouldUpdateCocktail(this.cocktailToSend);
   }
 }

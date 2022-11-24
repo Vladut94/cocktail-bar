@@ -19,7 +19,8 @@ import {Cocktail} from "../../core/interfaces/cocktail.interface";
 export class AddCocktailComponent implements OnInit {
   cocktailForm : FormGroup;
   actionBtn: string = "Save";
-  cocktailToEdit !: Cocktail;
+  // @ts-ignore
+  cocktailToEdit : Cocktail = null;
 
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
@@ -60,50 +61,58 @@ export class AddCocktailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      this.shouldEditCocktail();
+      if (this.cocktailToEdit) {
+        this.actionBtn = "Edit";
+      }
   }
 
   register() {
-    if (!this.cocktailToEdit) {
-      this.shouldEditCocktail();
+    if (this.cocktailToEdit){
+      this.stateCocktailService.updateCocktail(this.cocktailForm.value, this.cocktailToEdit.id)
+      this.resetCocktailForm();
+      this.navigateAfterRegistered();
+    }else {
+
+      const payload = {
+        name: this.cocktailForm.value['name'],
+        author: this.cocktailForm.value['author'],
+        ingredients: this.ingredients,
+        description: this.cocktailForm.value['description'],
+        imageUrl: this.cocktailForm.value['imageUrl'],
+        withAlcohol: this.cocktailForm.value['withAlcohol'],
+      }
+
+      this.cocktailService.addCocktail(payload).subscribe(() => {
+        this.resetCocktailForm();
+        this.navigateAfterRegistered();
+      });
     }
-    this.actionBtn = "Save";
 
-    const payload = {
-     name: this.cocktailForm.value['name'],
-     author: this.cocktailForm.value['author'],
-     ingredients: this.ingredients,
-     description: this.cocktailForm.value['description'],
-     imageUrl: this.cocktailForm.value['imageUrl'],
-     withAlcohol: this.cocktailForm.value['withAlcohol'],
-   }
-
-   this.cocktailService.addCocktail(payload).subscribe();
-
-   this.cocktailForm.reset();
-   this.router.navigate(['my-cocktails']);
   }
 
   shouldEditCocktail() {
-    this.actionBtn = "Edit";
 
-    this.stateCocktailService.editCocktail$.subscribe(editCocktail => {
+    this.stateCocktailService.getUpdatedCocktail().subscribe(editCocktail => {
       console.log(editCocktail);
-      editCocktail.ingredients?.forEach((ingr) => this.ingredients.push(ingr));
-      this.cocktailForm.controls['name'].setValue(editCocktail.name)
-      this.cocktailForm.controls['author'].setValue(editCocktail.author)
-      this.cocktailForm.controls['description'].setValue(editCocktail.description)
-      this.cocktailForm.controls['imageUrl'].setValue(editCocktail.imageUrl)
-      this.cocktailForm.controls['withAlcohol'].setValue(editCocktail.withAlcohol)
-      // this.cocktailForm.patchValue({
-      //   name: editCocktail.name,
-      //   author: editCocktail.author,
-      //   description: editCocktail.description,
-      //   imageUrl: editCocktail.imageUrl,
-      //   withAlcohol: editCocktail.withAlcohol,
-      // })
+      if (editCocktail) {
+        editCocktail.ingredients.forEach((ingr) => this.ingredients.push(ingr));
+        this.cocktailForm.controls['name'].setValue(editCocktail.name)
+        this.cocktailForm.controls['author'].setValue(editCocktail.author)
+        this.cocktailForm.controls['description'].setValue(editCocktail.description)
+        this.cocktailForm.controls['imageUrl'].setValue(editCocktail.imageUrl)
+        this.cocktailForm.controls['withAlcohol'].setValue(editCocktail.withAlcohol)
+      }
+
       this.cocktailToEdit = editCocktail;
     });
-    this.cocktailService.editCocktail(this.cocktailForm.value, this.cocktailToEdit.id);
+  }
 
+  resetCocktailForm() {
+    this.cocktailForm.reset();
+  }
+
+  navigateAfterRegistered() {
+    this.router.navigate(['my-cocktails']);
   }
 }
