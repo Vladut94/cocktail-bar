@@ -96,9 +96,12 @@ export class AddCocktailComponent implements OnInit {
     this.stateCocktailService.getUpdatedCocktail().subscribe(editCocktail => {
       console.log(editCocktail);
       if (editCocktail) {
-        editCocktail.ingredients.forEach((ingr) => this.ingredients.push(ingr));
+        // editCocktail.ingredients.forEach((ingr) => this.ingredients.push(ingr));
         this.cocktailForm.controls['name'].setValue(editCocktail.name)
         this.cocktailForm.controls['author'].setValue(editCocktail.author)
+        this.cocktailForm.controls['ingredients']
+          .setValue(editCocktail.ingredients
+            .forEach((ingr) => this.ingredients.push(ingr)));
         this.cocktailForm.controls['description'].setValue(editCocktail.description)
         this.cocktailForm.controls['imageUrl'].setValue(editCocktail.imageUrl)
         this.cocktailForm.controls['withAlcohol'].setValue(editCocktail.withAlcohol)
@@ -110,6 +113,8 @@ export class AddCocktailComponent implements OnInit {
 
   resetCocktailForm() {
     this.cocktailForm.reset();
+    this.ingredients = [];
+    this.actionBtn = "Save";
   }
 
   navigateAfterRegistered() {

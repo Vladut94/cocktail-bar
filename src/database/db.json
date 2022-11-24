@@ -57,14 +57,11 @@
     },
     {
       "name": "test",
-      "author": "Bruce",
-      "ingredients": [
-        "banana",
-        "water"
-      ],
-      "description": "it's working",
-      "imageUrl": "https://www.acouplecooks.com/wp-content/uploads/2020/08/Apple-Cider-Mule-002.jpg",
-      "withAlcohol": false,
+      "author": "John",
+      "ingredients": ["water"],
+      "description": "test 2",
+      "imageUrl": "https://realfood.tesco.com/media/images/BloodOrangeMojito2-LGH-c87d8721-02d2-4c06-87aa-9753c185e681-0-1400x919.jpg",
+      "withAlcohol": true,
       "id": 6
     }
   ]

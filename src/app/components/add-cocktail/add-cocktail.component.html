@@ -49,6 +49,10 @@
       <button type="button" class="btn btn-success m-2"
               (click)="register()">{{actionBtn}}
       </button>
+      <button type="button" class="btn btn-danger m-2"
+              *ngIf="cocktailForm.value['name'] != '' || ingredients.length > 0"
+              (click)="resetCocktailForm()">Reset
+      </button>
     </form>
   </div>
 <!--  Cocktail preview-->
