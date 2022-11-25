@@ -56,12 +56,12 @@
       "id": 5
     },
     {
-      "name": "test",
+      "name": "test 2",
       "author": "John",
       "ingredients": [
-        "sugar",
         "water",
-        "lemon"
+        "lemon",
+        "salt"
       ],
       "description": "bla bla bla bla ",
       "imageUrl": "https://www.acouplecooks.com/wp-content/uploads/2020/02/Margarita-018.jpg",

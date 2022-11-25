@@ -11,6 +11,7 @@ import {ApiCocktailService} from "../../../core/services/api-cocktail.service";
 })
 export class CardCocktailComponent implements OnInit {
   @Input() cocktail !: Cocktail;
+  @Input() searchText !: string;
 
   cocktailToSend!: Cocktail;
 

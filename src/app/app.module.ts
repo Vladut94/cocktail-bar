@@ -11,6 +11,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddCocktailComponent } from './components/add-cocktail/add-cocktail.component';
 import { CocktailsComponent } from './components/my-cocktails/cocktails/cocktails.component';
 import { CardCocktailComponent } from './components/my-cocktails/card-cocktail/card-cocktail.component';
+import { SearchComponent } from './components/my-cocktails/search/search.component';
 
 
 import {MatChipsModule} from '@angular/material/chips';
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import {HttpClientModule} from "@angular/common/http";
     AddCocktailComponent,
     CocktailsComponent,
     CardCocktailComponent,
+    SearchComponent,
   ],
     imports: [
         BrowserModule,
@@ -39,7 +42,8 @@ import {HttpClientModule} from "@angular/common/http";
         MatIconModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

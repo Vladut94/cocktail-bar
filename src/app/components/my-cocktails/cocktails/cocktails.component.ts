@@ -9,6 +9,7 @@ import {Cocktail} from "../../../core/interfaces/cocktail.interface";
 })
 export class CocktailsComponent implements OnInit {
   cocktails!: Cocktail[];
+  searchText: string = '';
 
   constructor(private stateCocktailService: StateCocktailService) { }
 
@@ -17,4 +18,7 @@ export class CocktailsComponent implements OnInit {
       .subscribe((cocktails => this.cocktails = cocktails));
   }
 
+  onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue;
+  }
 }
