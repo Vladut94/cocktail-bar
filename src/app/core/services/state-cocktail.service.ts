@@ -41,7 +41,7 @@ export class StateCocktailService {
      return this.shouldUpdateCocktail$;
   }
 
-  updateCocktail(payload: Cocktail, id: number) {
+  updateCocktail(payload: Partial<Cocktail>, id: number) {
      this.apiCocktailService.editCocktail(payload, id).subscribe((updatedCocktail) => {
        this.updateCocktail$.next(updatedCocktail);
      })

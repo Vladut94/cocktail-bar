@@ -61,7 +61,7 @@ export class AddCocktailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.shouldEditCocktail();
+      this.fillTheForm();
       if (this.cocktailToEdit) {
         this.actionBtn = "Edit";
       }
@@ -69,11 +69,21 @@ export class AddCocktailComponent implements OnInit {
 
   register() {
     if (this.cocktailToEdit){
-      this.stateCocktailService.updateCocktail(this.cocktailForm.value, this.cocktailToEdit.id)
+      //Edit mode
+      const payload : Partial<Cocktail> = {
+        name: this.cocktailForm.value['name'],
+        author: this.cocktailForm.value['author'],
+        ingredients: this.ingredients,
+        description: this.cocktailForm.value['description'],
+        imageUrl: this.cocktailForm.value['imageUrl'],
+        withAlcohol: this.cocktailForm.value['withAlcohol'],
+      }
+      this.stateCocktailService.updateCocktail(payload, this.cocktailToEdit.id);
+
       this.resetCocktailForm();
       this.navigateAfterRegistered();
     }else {
-
+      //Add mode
       const payload = {
         name: this.cocktailForm.value['name'],
         author: this.cocktailForm.value['author'],
@@ -91,17 +101,14 @@ export class AddCocktailComponent implements OnInit {
 
   }
 
-  shouldEditCocktail() {
-
+  fillTheForm() {
+    //Populate form on edit
     this.stateCocktailService.getUpdatedCocktail().subscribe(editCocktail => {
       console.log(editCocktail);
       if (editCocktail) {
-        // editCocktail.ingredients.forEach((ingr) => this.ingredients.push(ingr));
+        editCocktail.ingredients.forEach((ingr) => this.ingredients.push(ingr));
         this.cocktailForm.controls['name'].setValue(editCocktail.name)
         this.cocktailForm.controls['author'].setValue(editCocktail.author)
-        this.cocktailForm.controls['ingredients']
-          .setValue(editCocktail.ingredients
-            .forEach((ingr) => this.ingredients.push(ingr)));
         this.cocktailForm.controls['description'].setValue(editCocktail.description)
         this.cocktailForm.controls['imageUrl'].setValue(editCocktail.imageUrl)
         this.cocktailForm.controls['withAlcohol'].setValue(editCocktail.withAlcohol)
