@@ -34,4 +34,10 @@ export class ApiCocktailService {
 
     return this.http.post<Cocktail>(url, payload, httpOptions);
   }
+
+  editCocktail(payload: Partial<Cocktail>, cocktailId: number): Observable<Cocktail> {
+    const url = `${this.baseUrl}/cocktails/${cocktailId}`;
+
+    return this.http.patch<Cocktail>(url, payload, httpOptions);
+  }
 }

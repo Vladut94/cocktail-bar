@@ -12,6 +12,8 @@ import {ApiCocktailService} from "../../../core/services/api-cocktail.service";
 export class CardCocktailComponent implements OnInit {
   @Input() cocktail !: Cocktail;
 
+  cocktailToSend!: Cocktail;
+
   constructor(private stateCocktailService: StateCocktailService,
               private apiCocktailService: ApiCocktailService) { }
 
@@ -22,5 +24,20 @@ export class CardCocktailComponent implements OnInit {
   deleteCocktail(): void {
     this.apiCocktailService.deleteCocktail(this.cocktail.id).subscribe(() =>
       (this.stateCocktailService.deleteCocktail(this.cocktail.id)));
+  }
+
+  editCocktail() {
+    console.log(this.cocktail);
+    this.cocktailToSend = {
+      id: this.cocktail.id,
+      name: this.cocktail.name,
+      author: this.cocktail.author,
+      ingredients: this.cocktail.ingredients,
+      description: this.cocktail.description,
+      imageUrl: this.cocktail.imageUrl,
+      withAlcohol: this.cocktail.withAlcohol
+    }
+
+    this.stateCocktailService.shouldUpdateCocktail(this.cocktailToSend);
   }
 }
