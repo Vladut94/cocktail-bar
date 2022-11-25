@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { FilterComponent } from './components/my-cocktails/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {FormsModule} from "@angular/forms";
     CocktailsComponent,
     CardCocktailComponent,
     SearchComponent,
+    FilterComponent,
   ],
     imports: [
         BrowserModule,

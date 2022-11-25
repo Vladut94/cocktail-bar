@@ -65,7 +65,7 @@
       ],
       "description": "bla bla bla bla ",
       "imageUrl": "https://www.acouplecooks.com/wp-content/uploads/2020/02/Margarita-018.jpg",
-      "withAlcohol": true,
+      "withAlcohol": false,
       "id": 6
     }
   ]

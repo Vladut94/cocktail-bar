@@ -14,11 +14,21 @@ export class CocktailsComponent implements OnInit {
   constructor(private stateCocktailService: StateCocktailService) { }
 
   ngOnInit(): void {
-    this.stateCocktailService.cocktails$
-      .subscribe((cocktails => this.cocktails = cocktails));
+    this.displayAllCocktails();
   }
 
   onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
+  }
+
+  displayAllCocktails() {
+    this.stateCocktailService.cocktails$
+      .subscribe((cocktails => this.cocktails = cocktails));
+  }
+
+  displayFilteredCocktails(filteredValue: boolean) {
+    this.displayAllCocktails();
+    this.cocktails = this.cocktails.filter((filteredCockteils) =>
+      filteredCockteils.withAlcohol === filteredValue);
   }
 }
